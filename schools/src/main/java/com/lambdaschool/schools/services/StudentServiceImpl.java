@@ -17,8 +17,7 @@ import java.util.List;
  */
 @Service(value = "studentService")
 public class StudentServiceImpl
-    implements StudentService
-{
+        implements StudentService {
     /**
      * Connects this service to the Student table.
      */
@@ -32,45 +31,40 @@ public class StudentServiceImpl
     private CoursesService coursesService;
 
     @Override
-    public List<Student> findAll()
-    {
+    public List<Student> findAll() {
         List<Student> list = new ArrayList<>();
         /*
          * findAll returns an iterator set.
          * iterate over the iterator set and add each element to an array list.
          */
         studentrepos.findAll()
-            .iterator()
-            .forEachRemaining(list::add);
+                .iterator()
+                .forEachRemaining(list::add);
         return list;
     }
 
     @Override
-    public Student findStudentById(long id)
-    {
+    public Student findStudentById(long id) {
         return studentrepos.findById(id)
-            .orElseThrow(() -> new EntityNotFoundException("Student id " + id + " not found!"));
+                .orElseThrow(() -> new EntityNotFoundException("Student id " + id + " not found!"));
     }
 
     @Transactional
     @Override
-    public void delete(long id)
-    {
+    public void delete(long id) {
         studentrepos.findById(id)
-            .orElseThrow(() -> new EntityNotFoundException("Student id " + id + " not found!"));
+                .orElseThrow(() -> new EntityNotFoundException("Student id " + id + " not found!"));
         studentrepos.deleteById(id);
     }
 
     @Transactional
     @Override
-    public Student save(Student student)
-    {
+    public Student save(Student student) {
         Student newStudent = new Student();
 
-        if (student.getStudentid() != 0)
-        {
+        if (student.getStudentid() != 0) {
             Student oldStudent = studentrepos.findById(student.getStudentid())
-                .orElseThrow(() -> new EntityNotFoundException("Student id " + student.getStudentid() + " not found!"));
+                    .orElseThrow(() -> new EntityNotFoundException("Student id " + student.getStudentid() + " not found!"));
 
             newStudent.setStudentid(student.getStudentid());
         }
@@ -78,15 +72,14 @@ public class StudentServiceImpl
         newStudent.setName(student.getName());
 
         newStudent.getCourses()
-            .clear();
-        for (StudCourses sc : student.getCourses())
-        {
+                .clear();
+        for (StudCourses sc : student.getCourses()) {
             Course newCourse = coursesService.findCourseById(sc.getCourse()
-                .getCourseid());
+                    .getCourseid());
 
             newStudent.getCourses()
-                .add(new StudCourses(newCourse,
-                    newStudent))
+                    .add(new StudCourses(newCourse,
+                            newStudent))
             ;
         }
 

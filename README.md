@@ -10,7 +10,8 @@ A student that completes this project shows that they can:
 
 ## Introduction
 
-This is a standard database scheme with courses, students, and instructors. This Java Spring REST API application will provide endpoints for clients to perform the various CRUD operations on data sets contained in the application's data.
+This is a standard database scheme with courses, students, and instructors. This Java Spring REST API application will
+provide endpoints for clients to perform the various CRUD operations on data sets contained in the application's data.
 
 ### Database layout
 
@@ -28,12 +29,17 @@ All tables contain the following auditing fields
 Table Relationships include
 
 * Courses table is the driving table.
-* Instructors have a Many-To-One relationship with Courses. Each instructor can teach many courses but each course will have only one instructor.
-* Students have a Many-To-Many relationship with Courses. Students can take multiple courses and each course will have multiple students.
+* Instructors have a Many-To-One relationship with Courses. Each instructor can teach many courses but each course will
+  have only one instructor.
+* Students have a Many-To-Many relationship with Courses. Students can take multiple courses and each course will have
+  multiple students.
 
-The starting application is not meant to be a complete, stand-alone application. The application has enough to complete the project but is missing many key endpoints such as endpoints related to instructors, PATCH endpoints, and a variety of necessary updates and deletes relating to many to many relationships.
+The starting application is not meant to be a complete, stand-alone application. The application has enough to complete
+the project but is missing many key endpoints such as endpoints related to instructors, PATCH endpoints, and a variety
+of necessary updates and deletes relating to many to many relationships.
 
-For those available endpoints, using the provided seed data, this application returns the following data. Expand the section of the endpoint to see the data that is returned.
+For those available endpoints, using the provided seed data, this application returns the following data. Expand the
+section of the endpoint to see the data that is returned.
 
 <details>
 <summary>http://localhost:2019/courses/courses</summary>
@@ -518,7 +524,9 @@ Status OK
 
 </details>
 
-After completing the project using the provided seed data, a successful application will return the following data based on the given endpoint. Only added or changed endpoints are shown below. Expand the section of the endpoint to see the data that is returned.
+After completing the project using the provided seed data, a successful application will return the following data based
+on the given endpoint. Only added or changed endpoints are shown below. Expand the section of the endpoint to see the
+data that is returned.
 
 ### MVP
 
@@ -627,7 +635,7 @@ After completing the project using the provided seed data, a successful applicat
 [Swagger for School API](https://drive.google.com/open?id=1Xl542CN81taBcMM9dPo5KnscaRa1ZnUi)
 
 Expand the endpoint to see a sample instructor with advice about dogs
-  
+
 <details>
 <summary>http://localhost:2019/instructors/instructor/3/advice/dog</summary>
 
@@ -656,7 +664,7 @@ Expand the endpoint to see a sample instructor with advice about dogs
 </details>
 
 Expand the endpoint to see a sample instructor with advice about weather
-  
+
 <details>
 <summary>http://localhost:2019/instructors/instructor/3/advice/weather</summary>
 
@@ -702,53 +710,59 @@ Prevent null advice from displaying
 ## Instructions
 
 * [ ] Please fork and clone this repository.
-* [ ] This repository does have a starter project, so you must start with that application inside of the cloned repository folder. Regularly commit and push your code as appropriate.
-* [ ] A data.sql file has been provided with seed data. You can use this class directly or modify it to fit your models. However, the data found in the file is the seed data to use!
+* [ ] This repository does have a starter project, so you must start with that application inside of the cloned
+  repository folder. Regularly commit and push your code as appropriate.
+* [ ] A data.sql file has been provided with seed data. You can use this class directly or modify it to fit your models.
+  However, the data found in the file is the seed data to use!
 
 ### MVP
 
 Add appropriate exception handling routines.
 
 * [ ] You must specifically handle the following exceptions:
-  * [ ] a resource is not found where it should be - for example, you look up a student who is not there
-  * [ ] a resource is found where it should not be - for example, you try to enroll a student in a course where they are already enrolled
-  * [ ] a non-handled endpoint is accessed (a URL not found exception)
+    * [ ] a resource is not found where it should be - for example, you look up a student who is not there
+    * [ ] a resource is found where it should not be - for example, you try to enroll a student in a course where they
+      are already enrolled
+    * [ ] a non-handled endpoint is accessed (a URL not found exception)
 * [ ] All other exceptions should be handled by some generic exception handled that you provide.
-* [ ] All exception messages should start with the phrase "Found an issue with School: " followed by any system-generated messages you think appropriate.
+* [ ] All exception messages should start with the phrase "Found an issue with School: " followed by any
+  system-generated messages you think appropriate.
 * [ ] The following is the format for the error messages
-  * **Title** - The title of the exception
-  * **Status** - Http Status Code
-  * **detail** - Detailed message for the client
-  * **timestamp** - date and time of the exception
-  * **developer** -  message for developers about this error message, things like class and code causing the error
-  * **List of Validation Errors** - If data validation errors caused this error, the list of them will appear here
+    * **Title** - The title of the exception
+    * **Status** - Http Status Code
+    * **detail** - Detailed message for the client
+    * **timestamp** - date and time of the exception
+    * **developer** - message for developers about this error message, things like class and code causing the error
+    * **List of Validation Errors** - If data validation errors caused this error, the list of them will appear here
 
 ### Stretch Goal
 
 Add Validations
 
 * [ ] Add the following validations to your code
-  * [ ] Course Model
-    * [ ] Coursename
-      * [ ] Not Null
-      * [ ] Minimum 2 characters
-      * [ ] Maximum 50 characters
-  * [ ] Student Model
-    * [ ] Name
-      * [ ] Not Null
-      * [ ] Minimum 2 characters
-      * [ ] Maximum 30 characters
-  * [ ] Instructor Model
-    * [ ] Name
-      * [ ] Not Null
-      * [ ] Minimum 2 characters
-      * [ ] Maximum 30 characters
-  * [ ] Each validation should report an appropriate exception message if violated
+    * [ ] Course Model
+        * [ ] Coursename
+            * [ ] Not Null
+            * [ ] Minimum 2 characters
+            * [ ] Maximum 50 characters
+    * [ ] Student Model
+        * [ ] Name
+            * [ ] Not Null
+            * [ ] Minimum 2 characters
+            * [ ] Maximum 30 characters
+    * [ ] Instructor Model
+        * [ ] Name
+            * [ ] Not Null
+            * [ ] Minimum 2 characters
+            * [ ] Maximum 30 characters
+    * [ ] Each validation should report an appropriate exception message if violated
 
 Get Data from External API
 
-* [ ] Create an endpoint **/instructors/instructor/{instructorid}/advice** that returns the instructor's information plus random advice from an external API.
-  * [ ] The route of the external API is [https://api.adviceslip.com/advice](https://api.adviceslip.com/advice) and yields the JSON Object
+* [ ] Create an endpoint **/instructors/instructor/{instructorid}/advice** that returns the instructor's information
+  plus random advice from an external API.
+    * [ ] The route of the external API is [https://api.adviceslip.com/advice](https://api.adviceslip.com/advice) and
+      yields the JSON Object
 
   ```JSON
   {
@@ -762,27 +776,27 @@ Get Data from External API
   <details>
   <summary>Hint:</summary>
 
-  * [ ] Add a transient field called **advice** to the instructor model.
-    * Note: Other endpoints that return instructor will include an empty advice field.
-  
-  * [ ] Create a model to represent the advice slip class
-  
-  * [ ] Create the instructor repository
-  
-  * [ ] Create the instructor service
-    * [ ] Create a method called **addAdvice**
-      * [ ] Find the instructor using the repository **findById**
-      * [ ] get a random advice from the API
-        * [ ] The API returns the slip JSON from above
-        * [ ] The API returns data in media type text/html
-      * [ ] set the advice field to the advice received from the API
-      * [ ] return that modified instructor object to the controller
-    * [ ] The controller returns the modified instructor object to the client.
+    * [ ] Add a transient field called **advice** to the instructor model.
+        * Note: Other endpoints that return instructor will include an empty advice field.
+
+    * [ ] Create a model to represent the advice slip class
+
+    * [ ] Create the instructor repository
+
+    * [ ] Create the instructor service
+        * [ ] Create a method called **addAdvice**
+            * [ ] Find the instructor using the repository **findById**
+            * [ ] get a random advice from the API
+                * [ ] The API returns the slip JSON from above
+                * [ ] The API returns data in media type text/html
+            * [ ] set the advice field to the advice received from the API
+            * [ ] return that modified instructor object to the controller
+        * [ ] The controller returns the modified instructor object to the client.
 
   </details>
 
   Expand the endpoint to see a sample instructor with advice
-  
+
   <details>
   <summary>http://localhost:2019/instructors/instructor/3/advice</summary>
 
@@ -813,16 +827,19 @@ Get Data from External API
 Custom Swagger Documentation
 
 * [ ] Add custom Swagger Documentation for
-  * [ ] All endpoints in the Courses Controller
-  * [ ] All fields in the Courses model
-  * [ ] All the validations added above should be documented in Swagger
-  * [ ] Swagger API-Information should point to your information
+    * [ ] All endpoints in the Courses Controller
+    * [ ] All fields in the Courses model
+    * [ ] All the validations added above should be documented in Swagger
+    * [ ] Swagger API-Information should point to your information
 
 Use a search term for the advice
 
-* [ ] Create an endpoint **/instructors/instructor/{instructorid}/advice/{search term}** that returns the instructor's information plus advice based off of the search term from an external API.
+* [ ] Create an endpoint **/instructors/instructor/{instructorid}/advice/{search term}** that returns the instructor's
+  information plus advice based off of the search term from an external API.
 
-The route of the external API is [https://api.adviceslip.com/advice/search/dog](https://api.adviceslip.com/advice/search/dog) and yields the JSON Object
+The route of the external API
+is [https://api.adviceslip.com/advice/search/dog](https://api.adviceslip.com/advice/search/dog) and yields the JSON
+Object
 
   ```JSON
   {
@@ -838,10 +855,11 @@ The route of the external API is [https://api.adviceslip.com/advice/search/dog](
   }
   ```
 
-Notice that this returns a list of advices. We are interested in returning the first one in the list. A general error message should be reported if the search term returns no advice.
+Notice that this returns a list of advices. We are interested in returning the first one in the list. A general error
+message should be reported if the search term returns no advice.
 
 Expand the endpoint to see a sample instructor with advice about dogs
-  
+
 <details>
 <summary>http://localhost:2019/instructors/instructor/3/advice/dog</summary>
 
@@ -870,7 +888,7 @@ Expand the endpoint to see a sample instructor with advice about dogs
 </details>
 
 Expand the endpoint to see a sample instructor with advice about weather
-  
+
 <details>
 <summary>http://localhost:2019/instructors/instructor/3/advice/weather</summary>
 
@@ -889,7 +907,10 @@ Expand the endpoint to see a sample instructor with advice about weather
 
 Prevent null advice from displaying
 
-* [ ] When an instructor model has no advice, the advice field is null, do not display the advice field in the JSON sent to the client. See [https://www.baeldung.com/jackson-ignore-null-fields](https://www.baeldung.com/jackson-ignore-null-fields) for insight.
+* [ ] When an instructor model has no advice, the advice field is null, do not display the advice field in the JSON sent
+  to the client.
+  See [https://www.baeldung.com/jackson-ignore-null-fields](https://www.baeldung.com/jackson-ignore-null-fields) for
+  insight.
 
 <details>
 <summary>http://localhost:2019/courses/course/6</summary>

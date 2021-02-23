@@ -19,8 +19,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(value = "/courses")
-public class CourseController
-{
+public class CourseController {
     /**
      * Using the Courses service to process Course data
      */
@@ -35,12 +34,11 @@ public class CourseController
      * @see CoursesService#findAll() CoursesService.findAll()
      */
     @GetMapping(value = "/courses",
-        produces = {"application/json"})
-    public ResponseEntity<?> listAllCourses()
-    {
+            produces = {"application/json"})
+    public ResponseEntity<?> listAllCourses() {
         List<Course> myCourses = coursesService.findAll();
         return new ResponseEntity<>(myCourses,
-            HttpStatus.OK);
+                HttpStatus.OK);
     }
 
     /**
@@ -52,14 +50,13 @@ public class CourseController
      * @see CoursesService#findCourseById(long) CoursesService.findCourseById(long)
      */
     @GetMapping(value = "/course/{courseId}",
-        produces = {"application/json"})
+            produces = {"application/json"})
     public ResponseEntity<?> getCourseById(
-        @PathVariable
-            Long courseId)
-    {
+            @PathVariable
+                    Long courseId) {
         Course u = coursesService.findCourseById(courseId);
         return new ResponseEntity<>(u,
-            HttpStatus.OK);
+                HttpStatus.OK);
     }
 
     /**
@@ -74,27 +71,26 @@ public class CourseController
      * @see CoursesService#save(Course) CoursesService.save(Course)
      */
     @PostMapping(value = "/course",
-        consumes = {"application/json"})
+            consumes = {"application/json"})
     public ResponseEntity<?> addCourse(
-        @Valid
-        @RequestBody
-            Course newcourse) throws
-                              URISyntaxException
-    {
+            @Valid
+            @RequestBody
+                    Course newcourse) throws
+            URISyntaxException {
         newcourse.setCourseid(0);
         newcourse = coursesService.save(newcourse);
 
         // set the location header for the newly created resource
         HttpHeaders responseHeaders = new HttpHeaders();
         URI newCourseURI = ServletUriComponentsBuilder.fromCurrentRequest()
-            .path("/{courseid}")
-            .buildAndExpand(newcourse.getCourseid())
-            .toUri();
+                .path("/{courseid}")
+                .buildAndExpand(newcourse.getCourseid())
+                .toUri();
         responseHeaders.setLocation(newCourseURI);
 
         return new ResponseEntity<>(null,
-            responseHeaders,
-            HttpStatus.CREATED);
+                responseHeaders,
+                HttpStatus.CREATED);
     }
 
     /**
@@ -109,14 +105,13 @@ public class CourseController
      * @see CoursesService#save(Course) CoursesService.save(Course)
      */
     @PutMapping(value = "/course/{courseid}",
-        consumes = {"application/json"})
+            consumes = {"application/json"})
     public ResponseEntity<?> updateFullCourse(
-        @Valid
-        @RequestBody
-            Course updateCourse,
-        @PathVariable
-            long courseid)
-    {
+            @Valid
+            @RequestBody
+                    Course updateCourse,
+            @PathVariable
+                    long courseid) {
         updateCourse.setCourseid(courseid);
         coursesService.save(updateCourse);
 
@@ -133,9 +128,8 @@ public class CourseController
      */
     @DeleteMapping(value = "/course/{id}")
     public ResponseEntity<?> deleteCourseById(
-        @PathVariable
-            long id)
-    {
+            @PathVariable
+                    long id) {
         coursesService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

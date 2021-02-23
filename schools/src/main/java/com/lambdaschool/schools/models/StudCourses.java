@@ -13,9 +13,8 @@ import java.io.Serializable;
 @Table(name = "studcourses")
 @IdClass(StudCoursesId.class)
 public class StudCourses
-    extends Auditable
-    implements Serializable
-{
+        extends Auditable
+        implements Serializable {
     /**
      * Foreign key into the course table
      */
@@ -34,8 +33,7 @@ public class StudCourses
     @JsonIgnoreProperties("courses")
     private Student student;
 
-    public StudCourses()
-    {
+    public StudCourses() {
     }
 
     /**
@@ -45,9 +43,8 @@ public class StudCourses
      * @param student The student object of the course student combination
      */
     public StudCourses(
-        Course course,
-        Student student)
-    {
+            Course course,
+            Student student) {
         this.course = course;
         this.student = student;
     }
@@ -57,8 +54,7 @@ public class StudCourses
      *
      * @return the complete course object of this course student combination
      */
-    public Course getCourse()
-    {
+    public Course getCourse() {
         return course;
     }
 
@@ -67,8 +63,7 @@ public class StudCourses
      *
      * @param course change the course object associated with this course student combination to this one.
      */
-    public void setCourse(Course course)
-    {
+    public void setCourse(Course course) {
         this.course = course;
     }
 
@@ -77,8 +72,7 @@ public class StudCourses
      *
      * @return the complete student object of this course student combination
      */
-    public Student getStudent()
-    {
+    public Student getStudent() {
         return student;
     }
 
@@ -87,30 +81,25 @@ public class StudCourses
      *
      * @param student change the student object associated with this course student combination to this one.
      */
-    public void setStudent(Student student)
-    {
+    public void setStudent(Student student) {
         this.student = student;
     }
 
     @Override
-    public boolean equals(Object o)
-    {
-        if (this == o)
-        {
+    public boolean equals(Object o) {
+        if (this == o) {
             return true;
         }
-        if (o == null || getClass() != o.getClass())
-        {
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
         StudCourses that = (StudCourses) o;
         return ((this.student == null) ? 0 : this.student.getStudentid()) == ((that.student == null) ? 0 : that.student.getStudentid()) &&
-            ((this.course == null) ? 0 : this.course.getCourseid()) == ((that.course == null) ? 0 : that.course.getCourseid());
+                ((this.course == null) ? 0 : this.course.getCourseid()) == ((that.course == null) ? 0 : that.course.getCourseid());
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         return 37;
     }
 }

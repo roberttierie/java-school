@@ -12,8 +12,7 @@ import java.util.Set;
 @Entity
 @Table(name = "students")
 public class Student
-    extends Auditable
-{
+        extends Auditable {
     /**
      * The primary key (long) of the students table
      */
@@ -25,7 +24,7 @@ public class Student
      * The name student (String)
      */
     @Column(nullable = false,
-        unique = true)
+            unique = true)
     private String name;
 
     /**
@@ -33,17 +32,16 @@ public class Student
      * connects students to the student course combination
      */
     @OneToMany(mappedBy = "student",
-        cascade = CascadeType.ALL,
-        orphanRemoval = true)
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
     @JsonIgnoreProperties(value = "student",
-        allowSetters = true)
+            allowSetters = true)
     private Set<StudCourses> courses = new HashSet<>();
 
     /**
      * Default constructor used primarily by the JPA.
      */
-    public Student()
-    {
+    public Student() {
     }
 
     /**
@@ -51,8 +49,7 @@ public class Student
      *
      * @return the student id, primary key, (long) of this student
      */
-    public long getStudentid()
-    {
+    public long getStudentid() {
         return studentid;
     }
 
@@ -61,8 +58,7 @@ public class Student
      *
      * @param studentid the new primary key (long) for this student
      */
-    public void setStudentid(long studentid)
-    {
+    public void setStudentid(long studentid) {
         this.studentid = studentid;
     }
 
@@ -71,8 +67,7 @@ public class Student
      *
      * @return the name (String) of this student
      */
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
@@ -81,8 +76,7 @@ public class Student
      *
      * @param name the new name (String) for this student
      */
-    public void setName(String name)
-    {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -91,8 +85,7 @@ public class Student
      *
      * @return list of student courses combinations associated with this student
      */
-    public Set<StudCourses> getCourses()
-    {
+    public Set<StudCourses> getCourses() {
         return courses;
     }
 
@@ -101,8 +94,7 @@ public class Student
      *
      * @param courses the new list of student courses combinations associated with this student
      */
-    public void setCourses(Set<StudCourses> courses)
-    {
+    public void setCourses(Set<StudCourses> courses) {
         this.courses = courses;
     }
 }

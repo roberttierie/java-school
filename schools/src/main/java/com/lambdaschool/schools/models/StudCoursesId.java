@@ -4,8 +4,7 @@ import javax.persistence.Embeddable;
 import java.io.Serializable;
 
 @Embeddable
-public class StudCoursesId implements Serializable
-{
+public class StudCoursesId implements Serializable {
     /**
      * The id of the student
      */
@@ -19,50 +18,41 @@ public class StudCoursesId implements Serializable
     /**
      * The default constructor
      */
-    public StudCoursesId()
-    {
+    public StudCoursesId() {
     }
 
-    public long getStudent()
-    {
+    public long getStudent() {
         return student;
     }
 
-    public void setStudent(long student)
-    {
+    public void setStudent(long student) {
         this.student = student;
     }
 
-    public long getCourse()
-    {
+    public long getCourse() {
         return course;
     }
 
-    public void setCourse(long course)
-    {
+    public void setCourse(long course) {
         this.course = course;
     }
 
     @Override
-    public boolean equals(Object o)
-    {
-        if (this == o)
-        {
+    public boolean equals(Object o) {
+        if (this == o) {
             return true;
         }
         // boolean temp = (o.getClass() instanceof Class);
-        if (o == null || getClass() != o.getClass())
-        {
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
         StudCoursesId that = (StudCoursesId) o;
         return student == that.student &&
-            course == that.course;
+                course == that.course;
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         return 37;
     }
 

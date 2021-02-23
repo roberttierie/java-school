@@ -12,8 +12,7 @@ import java.util.List;
 @Entity
 @Table(name = "instructors")
 public class Instructor
-    extends Auditable
-{
+        extends Auditable {
     /**
      * The primary key (long) of the instructor table
      */
@@ -32,17 +31,16 @@ public class Instructor
      * Forms a one to many relationship with courses. One instructor to many courses.
      */
     @OneToMany(mappedBy = "instructor",
-        cascade = CascadeType.ALL,
-        orphanRemoval = true)
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
     @JsonIgnoreProperties(value = "instructor",
-        allowSetters = true)
+            allowSetters = true)
     private List<Course> courses = new ArrayList<>();
 
     /**
      * Default Constructor used primarily by the JPA.
      */
-    public Instructor()
-    {
+    public Instructor() {
     }
 
     /**
@@ -51,8 +49,7 @@ public class Instructor
      * @param name The name (String) for the new instructor
      */
     public Instructor(
-        String name)
-    {
+            String name) {
         this.name = name;
     }
 
@@ -61,8 +58,7 @@ public class Instructor
      *
      * @return The primary key (long) for this instructor
      */
-    public long getInstructorid()
-    {
+    public long getInstructorid() {
         return instructorid;
     }
 
@@ -71,8 +67,7 @@ public class Instructor
      *
      * @param instructorid The new primary key (long) for this instructor
      */
-    public void setInstructorid(long instructorid)
-    {
+    public void setInstructorid(long instructorid) {
         this.instructorid = instructorid;
     }
 
@@ -81,8 +76,7 @@ public class Instructor
      *
      * @return the instructor name
      */
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
@@ -91,8 +85,7 @@ public class Instructor
      *
      * @param name the new instructor name (String) for this instructor
      */
-    public void setName(String name)
-    {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -101,8 +94,7 @@ public class Instructor
      *
      * @return The list of courses this instructor is teaching
      */
-    public List<Course> getCourses()
-    {
+    public List<Course> getCourses() {
         return courses;
     }
 
@@ -111,8 +103,7 @@ public class Instructor
      *
      * @param courses The new list of courses this instructor is teaching
      */
-    public void setCourses(List<Course> courses)
-    {
+    public void setCourses(List<Course> courses) {
         this.courses = courses;
     }
 }
